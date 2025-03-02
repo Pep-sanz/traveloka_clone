@@ -4,6 +4,7 @@ import React from 'react';
 import { FaMapMarkerAlt, FaStar } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 import { hotels } from '@/constants/hotels';
+import { useRouter } from 'next/navigation';
 
 interface HotelCardProps {
   id: number;
@@ -21,6 +22,7 @@ interface HotelCardProps {
 }
 
 const HotelCard: React.FC<HotelCardProps> = ({
+  id,
   name,
   location,
   rating,
@@ -30,6 +32,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
   amenities,
   images,
 }) => {
+  const router = useRouter();
   return (
     <div className="flex flex-col md:flex-row border rounded-lg shadow-md overflow-hidden p-4 bg-white mb-4">
       <div className="w-full md:w-1/3 relative">
@@ -83,7 +86,10 @@ const HotelCard: React.FC<HotelCardProps> = ({
               Rp {priceDiscounted.toLocaleString()}
             </p>
           </div>
-          <Button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 w-full md:w-auto mt-2 md:mt-0">
+          <Button
+            onClick={() => router.push(`/hotel/detail-hotel/${id}/list-room`)}
+            className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 w-full md:w-auto mt-2 md:mt-0"
+          >
             Pilih Kamar
           </Button>
         </div>

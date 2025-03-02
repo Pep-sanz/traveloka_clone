@@ -1,11 +1,7 @@
 import { hotels } from '@/constants/hotels';
 import HotelDetail from '@/modules/hotel/HotelDetail';
 
-interface HotelDetailProps {
-  params: { hotel_id: string };
-}
-
-export default function Page({ params }: HotelDetailProps) {
+export default function Page({ params }: any) {
   const hotel = hotels.find((hotel) => hotel.id === parseInt(params.hotel_id));
 
   if (!hotel) {
